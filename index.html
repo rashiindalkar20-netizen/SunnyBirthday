@@ -119,35 +119,6 @@ button:hover {
     margin: 20px auto;
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    width: 100%;
-    max-width: 700px;
-    margin: 20px auto;
-}
-
-.gallery img {
-    width: 100%;
-    height: 300px;
-    object-fit: contain;
-    border-radius: 18px;
-    border: 4px solid white;
-    box-shadow: 0 5px 15px #eab0c5;
-    background: #fff0f5;
-}
-
-.gallery img:only-child {
-    grid-column: span 2;
-}
-
-input[type="file"] {
-    max-width: 100%;
-    padding: 12px;
-    background: white;
-    border-radius: 12px;
-}
 
 .hidden {
     display: none;
@@ -165,9 +136,6 @@ footer {
 }
 
 @media(max-width:500px) {
-    .gallery img {
-        height: 150px;
-    }
     .card {
         padding: 23px;
     }
@@ -319,39 +287,6 @@ footer {
 
 </section>
 
-<!-- MEMORIES SECTION -->
-<section id="memories">
-
-    <h2>Beautiful Memories 📸</h2>
-
-    <p>
-        Every picture tells a story.
-    </p>
-
-    <br>
-
-    <input
-        type="file"
-        id="photoInput"
-        accept="image/*"
-        multiple
-        onchange="addPhotos(event)"
-    >
-
-    <div class="gallery" id="gallery">
-
-        <img src="images/sunny1.jpeg"
-             alt="Happy memories">
-
-        <img src="images/sunny2.jpeg"
-             alt="Birthday celebration">
-
-    </div>
-
-    <p style="font-size:14px;">
-    </p>
-
-</section>
 
 <!-- LOVE LETTER -->
 <section id="letterSection">
@@ -471,25 +406,6 @@ function openGift() {
         .classList.remove("hidden");
 
     playSound(740);
-}
-
-
-// Add your own photos
-function addPhotos(event) {
-    const gallery = document.getElementById("gallery");
-    gallery.innerHTML = "";
-
-    Array.from(event.target.files).forEach(file => {
-        if (!file.type.startsWith("image/")) return;
-
-        const img = document.createElement("img");
-        const imageURL = URL.createObjectURL(file);
-
-        img.src = imageURL;
-        img.alt = "Birthday memory";
-
-        gallery.appendChild(img);
-    });
 }
 
 
